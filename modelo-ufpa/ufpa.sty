@@ -1,0 +1,340 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade Federal do Pará
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Fábio Malcher Miranda, miranda.fmm@gmail.com
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DO PARÁ
+% ---
+
+\RequirePackage{graphicx}
+
+\ProvidesPackage{modelo-ufpa/ufpa}[2016/05/10 Criacao desta customizacao do abnTeX2]
+
+%\renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
+\renewcommand{\ABNTEXchapterfont}{\rmfamily\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\Large} % Altera tamanho dos títulos
+\renewcommand{\ABNTEXsubsectionfont}{\rmfamily}
+\setlength\afterchapskip{12pt} % Altera o espaçamento após capítulos
+
+% Variáveis
+\newcommand{\universidade}{\def \@universidade}
+\newcommand{\imprimiruniversidade}{\@universidade}
+\universidade{}
+\newcommand{\instituto}{\def \@instituto}
+\newcommand{\imprimirinstituto}{\@instituto}
+\instituto{}
+\newcommand{\faculdade}{\def \@faculdade}
+\newcommand{\imprimirfaculdade}{\@faculdade}
+\faculdade{}
+\newcommand{\curso}{\def \@curso}
+\newcommand{\imprimircurso}{\@curso}
+\curso{}
+\newcommand{\datadadefesa}{\def \@datadadefesa}
+\newcommand{\imprimirdatadadefesa}{\@datadadefesa}
+\datadadefesa{}
+\newcommand{\sobrenome}{\def \@sobrenome}
+\newcommand{\imprimirsobrenome}{\@sobrenome}
+\sobrenome{}
+\newcommand{\nome}{\def \@nome}
+\newcommand{\imprimirnome}{\@nome}
+\nome{}
+\newcommand{\palavraschave}{\def \@palavraschave}
+\newcommand{\imprimirpalavraschave}{\@palavraschave}
+\palavraschave{}
+\newcommand{\conceito}{\def \@conceito}
+\newcommand{\imprimirconceito}{\@conceito}
+\conceito{}
+\newcommand{\faculdadedoorientador}{\def \@faculdadedoorientador}
+\newcommand{\imprimirfaculdadedoorientador}{\@faculdadedoorientador}
+\faculdadedoorientador{}
+\newcommand{\primeiromembrodabanca}{\def \@primeiromembrodabanca}
+\newcommand{\imprimirprimeiromembrodabanca}{\@primeiromembrodabanca}
+\primeiromembrodabanca{}
+\newcommand{\faculdadedoprimeiromembrodabanca}{\def \@faculdadedoprimeiromembrodabanca}
+\newcommand{\imprimirfaculdadedoprimeiromembrodabanca}{\@faculdadedoprimeiromembrodabanca}
+\faculdadedoprimeiromembrodabanca{}
+\newcommand{\segundomembrodabanca}{\def \@segundomembrodabanca}
+\newcommand{\imprimirsegundomembrodabanca}{\@segundomembrodabanca}
+\segundomembrodabanca{}
+\newcommand{\faculdadedosegundomembrodabanca}{\def \@faculdadedosegundomembrodabanca}
+\newcommand{\imprimirfaculdadedosegundomembrodabanca}{\@faculdadedosegundomembrodabanca}
+\faculdadedosegundomembrodabanca{}
+
+% Novo list of (listings) para QUADROS
+
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de Quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+% Traduz comandos do espanhol no pacote algorithm2e
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+\SetKwBlock{Inicio}{inicio}{fim}
+
+\SetKwInput{Entrada}{Entrada}
+\SetKwInput{Saida}{Sa\'{i}da}
+\SetKwInput{Dados}{Dados}
+\SetKwInput{Resultado}{Resultado}
+\SetKw{Ate}{at\'{e}}
+\SetKw{KwRetorna}{retorna}
+\SetKw{Retorna}{retorna}
+\SetKwBlock{Inicio}{in\'{i}cio}{fim}
+\SetKwRepeat{Repita}{repita}{at\'{e}}
+
+\SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~{a}o}{sen\~{a}o se}{sen\~{a}o}{fim se}
+\SetKwSwitch{Selec}{Caso}{Outro}{selecione}{fa\c{c}a}{caso}{sen\~{a}o}{fim caso}{fim selec}
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+\SetKwFor{ParaPar}{para}{fa\c{c}a em paralelo}{fim para}
+\SetKwFor{ParaCada}{para cada}{fa\c{c}a}{fim para cada}
+\SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}
+\SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
+
+% Lista de Algoritmos
+
+\newlength\myAlgoLen
+
+\begingroup
+\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+\globaldefs\@ne \let\c@loadepth\@ne
+\newlistof{algorithms}{loa}{\listalgorithmname}
+\newlistentry{algocf}{loa}{0}
+\makeatother
+\endgroup
+
+\renewcommand\cftalgocfpresnum{\algorithmcfname~}
+\settowidth\myAlgoLen{\cftalgocfpresnum\cftalgocfaftersnum}
+\addtolength\cftalgocfnumwidth{\myAlgoLen} %
+\renewcommand\cftalgocfaftersnum{\hfill\textendash\hfill}
+
+\renewcommand{\listalgorithmcfname}{Lista de Algoritmos}%
+
+% A lista de Algoritmos não deve aparecer no sumário
+
+\newcommand{\imprimirlistadealgoritmos}{
+	\listofalgorithms
+	\pagebreak %
+}
+
+%% Grafico
+\newcommand{\graficoname}{Gráfico}
+\newfloat[chapter]{grafico}{lof}{\graficoname}
+\newlistentry{grafico}{lof}{0}
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space} 
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    
+    \begin{figure}[t]
+    \begin{center}
+    \includegraphics[scale=0.4]{modelo-ufpa/logo.eps}
+    \end{center}
+    \end{figure}
+    {\textsc{\textbf{\imprimiruniversidade}}}\\
+    {\textsc{\textbf{\imprimirinstituto}}}\\
+    {\textsc{\textbf{\imprimirfaculdade}}}\\
+    {\textsc{\textbf{\imprimircurso}}}
+
+    \vspace*{4cm}
+
+    {\textsc{\textbf{\imprimirautor}}}
+
+    \vfill
+    \begin{center}
+    \large\textsc{\textbf{\imprimirtitulo}}
+    \end{center}
+    \vfill
+
+    \normalsize{\textbf{\imprimirlocal}}\\
+    \normalsize{\textbf{\imprimirdata}}
+
+    \vspace*{1cm}
+  \end{capa}
+}
+
+
+% folha de rosto 
+
+\makeatletter
+
+\renewcommand{\imprimirfolhaderosto}{
+  \begin{center}
+    
+    \begin{figure}[t]
+    \begin{center}
+    \includegraphics[scale=0.4]{modelo-ufpa/logo.eps}
+    \end{center}
+    \end{figure}
+    {\textsc{\textbf{\imprimiruniversidade}}}\\
+    {\textsc{\textbf{\imprimirinstituto}}}\\
+    {\textsc{\textbf{\imprimirfaculdade}}}\\
+    {\textsc{\textbf{\imprimircurso}}}\\
+
+    \vspace*{2.6cm}
+
+    {\textsc{\textbf{\imprimirautor}}}
+
+    \vspace*{\fill}\vspace*{\fill}
+
+    \begin{center}
+    \large\textsc{\textbf{\imprimirtitulo}}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \abntex@ifnotempty{\imprimirpreambulo}{%
+      \hspace{.45\textwidth}
+      \begin{minipage}{.5\textwidth}
+      \SingleSpacing
+      \normalsize\imprimirpreambulo
+      
+      \vspace*{0.352cm}
+      
+      {\normalsize\imprimirorientadorRotulo~\imprimirorientador\par}
+      \end{minipage}%
+      \vspace*{\fill}
+    }%
+
+    \abntex@ifnotempty{\imprimircoorientador}{%
+      {\normalsize\imprimircoorientadorRotulo~\imprimircoorientador}%
+    }%
+
+    \vspace*{\fill}
+
+    {\normalsize\textbf\imprimirlocal}\\
+    {\normalsize\textbf\imprimirdata}
+    
+    \vspace*{1cm}
+  \end{center}
+}
+
+\makeatother
+
+% ficha catalográfica
+
+\makeatletter
+
+\newcommand{\imprimirfichacatalografica}{
+  \sffamily
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+	\small
+	%\imprimirautor
+	\imprimirsobrenome,~\imprimirnome
+	%Sobrenome, Nome do autor
+	
+	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	\imprimirlocal, \imprimirdata.
+	
+	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+	
+	\hspace{0.5cm}
+	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimiruniversidade\\
+\imprimirinstituto\\
+\imprimircurso,
+	\imprimirdata.}\\
+	
+	\hspace{0.5cm}
+		\imprimirpalavraschave
+		I. Título.
+	\end{minipage}}
+	\end{center}
+}
+
+\makeatother
+
+% folha de aprovação
+
+\makeatletter
+
+\newcommand{\imprimirfolhadeaprovacao}{
+  \begin{center}
+    {\large\textsc{\textbf{\imprimirautor}}}
+    \vspace*{\fill}
+    \begin{center}
+		\Large\textsc{\textbf{\imprimirtitulo}}
+    \end{center}
+    \vspace*{\fill}
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \normalsize\imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+   {\normalsize\imprimirdatadadefesa}\\
+   {\normalsize\imprimirconceito}
+   
+   \begin{center}
+         \textbf{Banca Examinadora}\\
+         \assinatura{\textbf{\imprimirorientador} \\
+         {\normalsize\imprimirfaculdadedoorientador} \\ Orientador}
+         \assinatura{\textbf{\imprimirprimeiromembrodabanca} \\
+         {\normalsize\imprimirfaculdadedoprimeiromembrodabanca} \\ Membro da Banca}
+         \assinatura{\textbf{\imprimirsegundomembrodabanca} \\
+         {\normalsize\imprimirfaculdadedosegundomembrodabanca} \\ Membro da Banca}
+         
+         \vspace*{\fill}
+         
+         {\normalsize\imprimirlocal}\\
+         {\normalsize\imprimirdata}
+         
+         \vspace*{1cm}
+   \end{center}
+}
+
+% Configuração do Sumário
+
+\renewcommand{\contentsname}{}
+
+\newcommand{\imprimirsumario}{ %
+	\pdfbookmark[0]{Sumário}{toc}
+	\tableofcontents*
+	\cleardoublepage
+}
+
+% Modifica o espaçamento no sumário
+% Nao ha espacos
+\setlength{\cftbeforeparagraphskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforechapterskip}{0pt}
+
+%\renewcommand\cftchapterfont{\normalsize}
+\renewcommand\cftsectionfont{\normalsize}
+\renewcommand\cftsubsectionfont{\normalsize\normalfont}
+\renewcommand\cftsubsubsectionfont{\normalsize\normalfont}
+
+\makeatother
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DO PARÁ
+% ---
